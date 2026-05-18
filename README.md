@@ -11,8 +11,8 @@
 
 This project implements two Wi-Fi security demonstration modules:
 
-- **Module 1 — Evil Twin:** Clones a legitimate Wi-Fi network, forces client disconnection via 802.11 deauth frames, and intercepts credentials through a phishing captive portal.
-- **Module 2 — Protocol Evolution:** Comparative demonstration from WEP to WPA3, with a live attack on each protocol generation.
+- **Project 1 — Evil Twin:** Clones a legitimate Wi-Fi network, forces client disconnection via 802.11 deauth frames, and intercepts credentials through a phishing captive portal.
+- **Project 2 — Protocol Evolution:** Comparative demonstration from WEP to WPA3, with a live attack on each protocol generation.
 
 ---
 
