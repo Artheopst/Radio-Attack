@@ -54,6 +54,8 @@ wifi_attack_lab/
 ├── pi_b/
 │   ├── switch.sh                  # Main AP mode switcher
 │   ├── start_mcdo_piB.sh          # Legitimate "Mcdo Free Wifi" network
+│   ├── start_v1.sh                # Start First version of the script
+│   ├── stop_v1.sh                 # Stop First version of the script
 │   └── configs/
 │       ├── hostapd_wep.conf           # WEP (1997)       — VULNERABLE
 │       ├── hostapd_wpa1.conf          # WPA1-TKIP (2003) — VULNERABLE
